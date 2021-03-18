@@ -16,8 +16,12 @@
   <body>
     <%= render 'layouts/partials/nav' %>
     <div class="container">
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
+      <% if notice %>
+        <div class="notification is-warning is-light"><%= notice %></div>
+      <% end %>
+      <% if alert %>
+        <div class="notification is-danger is-light"><%= alert %></div>
+      <% end %>
       <%= yield %>
     </div>
   </body>

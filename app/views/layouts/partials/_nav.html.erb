@@ -1,13 +1,13 @@
 <nav class="navbar is-link mb-4">
     <div class="navbar-brand">
         <%= link_to 'SSD-COMMERCE', products_path, class: 'navbar-item has-text-weight-bold' %>
-        <a class="navbar-burger">
+        <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
             <span></span>
             <span></span>
             <span></span>
         </a>
     </div>
-    <div class="navbar-menu">
+    <div class="navbar-menu" id="navMenu">
         <div class="navbar-start">
             <%= link_to "All Products", products_path, class: 'navbar-item' %>
         </div>
