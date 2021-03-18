@@ -1,6 +1,8 @@
-<nav class="navbar is-link mb-4">
+<nav class="navbar is-white is-spaced has-shadow">
     <div class="navbar-brand">
-        <%= link_to 'SSD-COMMERCE', products_path, class: 'navbar-item has-text-weight-bold' %>
+        <%= link_to products_path, class: 'navbar-item has-text-weight-bold' do %>
+            <i class="fas fa-dumpster mr-3"></i>MY-COMMERCE
+        <% end %>
         <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
             <span></span>
             <span></span>
@@ -9,15 +11,23 @@
     </div>
     <div class="navbar-menu" id="navMenu">
         <div class="navbar-start">
-            <%= link_to "All Products", products_path, class: 'navbar-item' %>
+            <%= link_to products_path, class: 'navbar-item' do %>
+                All Products<i class="fab fa-product-hunt ml-3"></i>
+            <% end %>
         </div>
         <div class="navbar-end">
             <% if admin_signed_in? %>
                 <p class="navbar-item">Hi, <%= current_admin.email %></p>
-                <%= link_to 'Sign Out', destroy_admin_session_path, method: :delete, class: 'navbar-item' %>
+                <%= link_to destroy_admin_session_path, method: :delete, class: 'navbar-item' do %>
+                    Sign Out<i class="fas fa-sign-out-alt ml-3"></i>
+                <% end %>
             <% else %>
-                <%= link_to 'Login', new_admin_session_path, class: 'navbar-item' %>
-                <%= link_to 'Sign Up', new_admin_registration_path, class: 'navbar-item' %>
+                <%= link_to new_admin_session_path, class: 'navbar-item' do %>
+                    Login<i class="fas fa-sign-in-alt ml-3"></i>
+                <% end %>
+                <%= link_to new_admin_registration_path, class: 'navbar-item' do %>
+                    Sign Up<i class="fas fa-user-plus ml-3"></i>
+                <% end %>
             <% end %>
         </div>
     </div>

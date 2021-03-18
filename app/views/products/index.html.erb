@@ -17,17 +17,17 @@
         <td><%= product.description %></td>
         <td><%= product.stock %></td>
         <td>
-          <%= link_to product, class: 'button is-small is-info' do %>
+          <%= link_to product, class: 'button is-small is-info is-outlined' do %>
             <i class="i fas fa-eye"></i>
           <% end %>
         </td>
         <td>
-          <%= link_to edit_product_path(product), class: 'button is-small is-success' do %>
+          <%= link_to edit_product_path(product), class: 'button is-small is-success is-outlined' do %>
             <i class="i fas fa-pen"></i>
           <% end %>
         </td>
         <td>
-          <%= link_to product, method: :delete, data: { confirm: 'Are you sure?' }, class: 'button is-small is-danger' do %>
+          <%= link_to product, method: :delete, data: { confirm: 'Are you sure?' }, class: 'button is-small is-danger is-outlined' do %>
             <i class="i fas fa-trash"></i>
           <% end %>
         </td>
@@ -36,4 +36,4 @@
   </tbody>
 </table>
 
-<%= link_to 'New Product', new_product_path, class: 'button is-primary' %>
+<%= link_to 'New Product', new_product_path, class: 'button is-link is-outlined' %>
