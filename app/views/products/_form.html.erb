@@ -34,7 +34,7 @@
     <%= fields_for @product_category do |pc| %>
       <div class="field">
         <%= pc.label 'All Categories', class: 'label' %><br />
-        <%= collection_select(:categories, :id, @all_categories, :id, :name, {}, {:multiple => true}) %>
+        <%= collection_select(:categories, :id, Category.all, :id, :name, {}, {:multiple => true}) %>
       </div>
     <% end %>
 

@@ -1,7 +1,6 @@
 class ProductsController < ApplicationController
   before_action :authenticate_admin!, except: [:index, :show]
   before_action :set_product, only: %i[ show edit update destroy ]
-  before_action :set_all_categories, only: %i[ edit update new create ]
 
   # GET /products or /products.json
   def index
@@ -46,6 +45,12 @@ class ProductsController < ApplicationController
 
   # PATCH/PUT /products/1 or /products/1.json
   def update
+    params[:categories][:id].each do |category|
+      if !category.empty?
+        @product.product_categories.build(:category_id => category)
+      end
+    end
+
     respond_to do |format|
       if @product.update(product_params)
         format.html { redirect_to @product, notice: "Product was successfully updated." }
@@ -67,10 +72,6 @@ class ProductsController < ApplicationController
   end
 
   private
-    def set_all_categories
-      @all_categories = Category.all
-    end
-
     # Use callbacks to share common setup or constraints between actions.
     def set_product
       @product = Product.find(params[:id])
@@ -78,6 +79,6 @@ class ProductsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def product_params
-      params.require(:product).permit(:title, :description, :stock)
+      params.require(:product).permit(:title, :description, :stock, :category_id => [])
     end
 end
