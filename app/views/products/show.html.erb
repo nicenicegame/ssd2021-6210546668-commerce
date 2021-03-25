@@ -14,7 +14,7 @@
 </p>
 
 <p>
-  <strong>Stock:</strong>
+  <strong>Category:</strong>
   <% @product.product_categories.each do |pc| %>
     <%= Category.find(pc.category.id).name %>
   <% end %>
