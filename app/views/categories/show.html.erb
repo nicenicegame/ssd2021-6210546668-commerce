@@ -1,0 +1,9 @@
+<p>
+  <strong>Name:</strong>
+  <%= @category.name %>
+</p>
+
+<br>
+
+<%= link_to 'Edit', edit_category_path(@category), class: 'button is-success is-outlined mr-3' %>
+<%= link_to 'Back', categories_path, class: 'button is-danger is-outlined' %>

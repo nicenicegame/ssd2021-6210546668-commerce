@@ -10,6 +10,7 @@
         <th>Title</th>
         <th>Description</th>
         <th>Stock</th>
+        <th>Category</th>
         <th colspan="3"></th>
       </tr>
     </thead>
@@ -20,6 +21,11 @@
           <td><%= product.title %></td>
           <td><%= product.description %></td>
           <td><%= product.stock %></td>
+          <td>
+            <% product.product_categories.each do |pc| %>
+              <%= Category.find(pc.category.id).name %>
+            <% end %>
+          </td>
           <td>
             <%= link_to product, class: 'button is-small is-info is-outlined' do %>
               <i class="i fas fa-eye"></i>

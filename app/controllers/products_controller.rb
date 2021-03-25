@@ -1,6 +1,7 @@
 class ProductsController < ApplicationController
   before_action :authenticate_admin!, except: [:index, :show]
   before_action :set_product, only: %i[ show edit update destroy ]
+  before_action :set_all_categories, only: %i[ edit update new create ]
 
   # GET /products or /products.json
   def index
@@ -14,6 +15,8 @@ class ProductsController < ApplicationController
   # GET /products/new
   def new
     @product = Product.new
+    @all_categories = Category.all
+    @product_category = @product.product_categories.build
   end
 
   # GET /products/1/edit
@@ -23,6 +26,12 @@ class ProductsController < ApplicationController
   # POST /products or /products.json
   def create
     @product = Product.new(product_params)
+
+    params[:categories][:id].each do |category|
+      if !category.empty?
+        @product.product_categories.build(:category_id => category)
+      end
+    end
 
     respond_to do |format|
       if @product.save
@@ -58,6 +67,10 @@ class ProductsController < ApplicationController
   end
 
   private
+    def set_all_categories
+      @all_categories = Category.all
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_product
       @product = Product.find(params[:id])

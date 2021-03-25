@@ -31,6 +31,13 @@
       <%= form.number_field :stock, class: 'input' %>
     </div>
 
+    <%= fields_for @product_category do |pc| %>
+      <div class="field">
+        <%= pc.label 'All Categories', class: 'label' %><br />
+        <%= collection_select(:categories, :id, @all_categories, :id, :name, {}, {:multiple => true}) %>
+      </div>
+    <% end %>
+
     <div class="action">
       <%= form.submit 'Submit', class: 'button is-primary is-outlined' %>
     </div>
