@@ -32,7 +32,7 @@
     </div>
 
     <div class="field">
-      <%= form.label :categories, class: 'label' %>
+      <%= form.label 'Categories (Can select multiple by dragging)', class: 'label' %>
       <div class="select is-multiple">
         <%= form.collection_select(:category_ids, Category.all, :id, :name, {}, {multiple: true}) %>
       </div>
