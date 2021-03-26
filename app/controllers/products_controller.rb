@@ -26,12 +26,6 @@ class ProductsController < ApplicationController
   def create
     @product = Product.new(product_params)
 
-    params[:categories][:id].each do |category|
-      if !category.empty?
-        @product.product_categories.build(category_id: category)
-      end
-    end
-
     respond_to do |format|
       if @product.save
         format.html { redirect_to @product, notice: "Product was successfully created." }
@@ -45,14 +39,6 @@ class ProductsController < ApplicationController
 
   # PATCH/PUT /products/1 or /products/1.json
   def update
-    @product.product_categories.clear
-
-    params[:categories][:id].each do |category|
-      if !category.empty?
-        @product.product_categories.build(category_id: category)
-      end
-    end
-
     respond_to do |format|
       if @product.update(product_params)
         format.html { redirect_to @product, notice: "Product was successfully updated." }
@@ -81,6 +67,6 @@ class ProductsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def product_params
-      params.require(:product).permit(:title, :description, :stock, category_id: [])
+      params.require(:product).permit(:title, :description, :stock, category_ids: [])
     end
 end

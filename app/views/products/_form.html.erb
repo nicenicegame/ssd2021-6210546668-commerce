@@ -31,14 +31,12 @@
       <%= form.number_field :stock, class: 'input' %>
     </div>
 
-    <%= fields_for @product_category do |pc| %>
-      <div class="field">
-        <%= pc.label 'Categories', class: 'label' %>
-        <div class="select is-multiple">
-          <%= collection_select(:categories, :id, Category.all, :id, :name, {}, { multiple: true }) %>
-        </div>
+    <div class="field">
+      <%= form.label :categories, class: 'label' %>
+      <div class="select is-multiple">
+        <%= form.collection_select(:category_ids, Category.all, :id, :name, {}, {multiple: true}) %>
       </div>
-    <% end %>
+    </div>
 
     <div class="action">
       <%= form.submit 'Submit', class: 'button is-primary is-outlined mt-3' %>
