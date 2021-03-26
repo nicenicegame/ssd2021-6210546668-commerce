@@ -22,9 +22,7 @@
           <td><%= product.description %></td>
           <td><%= product.stock %></td>
           <td>
-            <% product.product_categories.each do |pc| %>
-              <%= Category.find(pc.category.id).name %>
-            <% end %>
+            <%= product.categories.empty? ? 'NA' : product.categories.map(&:name).join(', ') %>
           </td>
           <td>
             <%= link_to product, class: 'button is-small is-info is-outlined' do %>
