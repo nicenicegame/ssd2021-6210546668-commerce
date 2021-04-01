@@ -18,6 +18,11 @@
   <%= @product.categories.empty? ? 'NA' : @product.categories.map(&:name).join(', ') %>
 </p>
 
+<p>
+  <strong>Status:</strong>
+  <%= @product.status.humanize %>
+</p>
+
 <br>
 
 <%= link_to 'Edit', edit_product_path(@product), class: 'button is-success is-outlined mr-3' %>

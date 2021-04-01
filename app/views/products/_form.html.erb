@@ -3,7 +3,6 @@
     <% if product.errors.any? %>
       <div class="notification is-danger is-light" id="error_explanation">
         <h2><%= pluralize(product.errors.count, "error") %> prohibited this product from being saved:</h2>
-
         <ul>
           <% product.errors.each do |error| %>
             <li><%= error.full_message %></li>
@@ -32,9 +31,16 @@
     </div>
 
     <div class="field">
-      <%= form.label 'Categories (Can select multiple by dragging)', class: 'label' %>
+      <%= form.label :categories, class: 'label' %>
       <div class="select is-multiple">
         <%= form.collection_select(:category_ids, Category.all, :id, :name, {}, {multiple: true}) %>
+      </div>
+    </div>
+
+    <div class="field">
+      <%= form.label :status, class: 'label' %>
+      <div class="select">
+        <%= form.select :status, Product.statuses.keys.map { |w| [w.humanize, w] } %>
       </div>
     </div>
 

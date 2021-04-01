@@ -1,6 +1,13 @@
 <div class="is-flex is-justify-content-space-between is-align-items-center">
   <h1 class="is-size-2 has-text-weight-bold mb-2">Products</h1>
-  <%= link_to '+ New Product', new_product_path, class: 'button is-link is-outlined' %>
+  <div>
+    <%= link_to new_product_path, class: 'button is-link is-outlined mr-1' do %>
+      New Product<i class="fas fa-plus-circle ml-1"></i>
+    <% end %>
+    <%= link_to products_path(format: :csv), class: 'button is-success is-outlined' do %>
+      Download CSV<i class="fas fa-download ml-1"></i>
+    <% end %>
+  </div>
 </div>
 
 <div class="table-container">
@@ -24,6 +31,7 @@
           <td>
             <%= product.categories.empty? ? 'NA' : product.categories.map(&:name).join(', ') %>
           </td>
+          <td><%= product.status.humanize %></td>
           <td>
             <%= link_to product, class: 'button is-small is-info is-outlined' do %>
               <i class="i fas fa-eye"></i>
@@ -45,3 +53,22 @@
   </table>
 </div>
 
+<%= form_tag products_csv_upload_path, multipart: true do %>
+  <div id="file-js-example" class="file has-name is-link">
+    <label class="file-label">
+      <%= file_field_tag :csv_file, class: 'file-input' %>
+      <span class="file-cta">
+        <span class="file-icon">
+          <i class="fas fa-upload"></i>
+        </span>
+        <span class="file-label">
+          Choose a file…
+        </span>
+      </span>
+      <span class="file-name">
+        No file uploaded
+      </span>
+    </label>
+  </div>
+  <%= submit_tag :upload, class: 'button is-success mt-3' %>
+<% end %>
