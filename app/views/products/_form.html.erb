@@ -40,7 +40,7 @@
     <div class="field">
       <%= form.label :status, class: 'label' %>
       <div class="select">
-        <%= form.select :status, Product.statuses.keys.map { |w| [w.humanize, w] } %>
+        <%= form.select :status, Product.statuses.keys.map { |s| [s.humanize, s] } %>
       </div>
     </div>
 
