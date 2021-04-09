@@ -44,25 +44,28 @@
       </div>
     </div>
 
-    <div id="file-js-example" class="file has-name is-link my-5">
-      <label class="file-label">
-        <%= form.file_field :primary_image, class: 'file-input' %>
-        <span class="file-cta">
-          <span class="file-icon">
-            <i class="fas fa-upload"></i>
+    <div class="field">
+      <% if product.primary_image.attached? %>
+        <label class="label">Currently: <%= product.primary_image.filename %></label>
+      <% else %>
+        <%= form.label :primary_image, class: 'label' %>
+      <% end %>
+      <div id="file-js-example" class="file has-name is-link">
+        <label class="file-label">
+          <%= form.file_field :primary_image, class: 'file-input' %>
+          <span class="file-cta">
+            <span class="file-icon">
+              <i class="fas fa-upload"></i>
+            </span>
+            <span class="file-label">
+              Choose a primary image
+            </span>
           </span>
-          <span class="file-label">
-            Choose a primary image
+          <span class="file-name">
+              No file uploaded
           </span>
-        </span>
-        <span class="file-name">
-          <% if product.primary_image.attached? %>
-            <%= product.primary_image.filename %>
-          <% else %>
-            No file uploaded
-          <% end %>
-        </span>
-      </label>
+        </label>
+      </div>
     </div>
 
     <div class="action">
