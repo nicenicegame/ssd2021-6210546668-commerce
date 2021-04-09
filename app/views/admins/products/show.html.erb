@@ -23,7 +23,11 @@
   <%= @product.status.humanize %>
 </p>
 
+<% if @product.primary_image.attached? %>
+  <%= image_tag @product.primary_image, width: '300px', class: 'my-4' %>
+<% end %>
+
 <br>
 
-<%= link_to 'Edit', edit_product_path(@product), class: 'button is-success is-outlined mr-3' %>
-<%= link_to 'Back', products_path, class: 'button is-danger is-outlined' %>
+<%= link_to 'Edit', edit_admins_product_path(@product), class: 'button is-success is-outlined mr-3' %>
+<%= link_to 'Back', admins_products_path, class: 'button is-danger is-outlined' %>

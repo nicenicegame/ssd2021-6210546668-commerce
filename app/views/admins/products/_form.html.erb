@@ -1,5 +1,5 @@
 <div class="my-5">
-  <%= form_with(model: product) do |form| %>
+  <%= form_with(model: product, url: admins_products_path, method: :post) do |form| %>
     <% if product.errors.any? %>
       <div class="notification is-danger is-light" id="error_explanation">
         <h2><%= pluralize(product.errors.count, "error") %> prohibited this product from being saved:</h2>
@@ -42,6 +42,27 @@
       <div class="select">
         <%= form.select :status, Product.statuses.keys.map { |s| [s.humanize, s] } %>
       </div>
+    </div>
+
+    <div id="file-js-example" class="file has-name is-link my-5">
+      <label class="file-label">
+        <%= form.file_field :primary_image, class: 'file-input' %>
+        <span class="file-cta">
+          <span class="file-icon">
+            <i class="fas fa-upload"></i>
+          </span>
+          <span class="file-label">
+            Choose a primary image
+          </span>
+        </span>
+        <span class="file-name">
+          <% if product.primary_image.attached? %>
+            <%= product.primary_image.filename %>
+          <% else %>
+            No file uploaded
+          <% end %>
+        </span>
+      </label>
     </div>
 
     <div class="action">

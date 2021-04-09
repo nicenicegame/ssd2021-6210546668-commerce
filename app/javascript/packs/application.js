@@ -35,11 +35,16 @@ document.addEventListener('DOMContentLoaded', () => {
     })
   }
 
-  const fileInput = document.querySelector('#file-js-example input[type=file]')
-  fileInput.addEventListener('change', () => {
-    if (fileInput.files.length > 0) {
+  const fileInputs = document.querySelectorAll(
+    '#file-js-example input[type=file]'
+  )
+
+  fileInputs.forEach((fi) => {
+    fi.addEventListener('change', () => {
       const fileName = document.querySelector('#file-js-example .file-name')
-      fileName.textContent = fileInput.files[0].name
-    }
+      if (fi.files.length > 0) {
+        fileName.textContent = fi.files[0].name
+      }
+    })
   })
 })
