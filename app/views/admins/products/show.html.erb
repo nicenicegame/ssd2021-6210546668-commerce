@@ -27,8 +27,10 @@
   <div class="my-3">
     <p><strong>Primary Image:</strong></p>
     <% if @product.primary_image.attached? %>
-      <%= image_tag @product.primary_image, width: '250px', class: 'mt-2' %>
-      <%= link_to 'Remove', '/admins/products/delete_image/' + @product.primary_image.id.to_s, class: 'button is-danger is-outlined' %>
+      <div class="is-inline-flex is-flex-direction-column is-align-items-center">
+        <%= image_tag @product.primary_image, width: '250px', class: 'mt-2' %>
+        <%= link_to 'X', '/admins/products/delete_image/' + @product.primary_image.id.to_s, class: 'button is-danger is-outlined' %>
+      </div>
     <% end %>
   </div>
 <% end %>
@@ -37,8 +39,10 @@
   <div class="my-3">
     <p><strong>Supporting Images:</strong></p>
       <% @product.supporting_images.each do |image| %>
-        <%= image_tag image, width: '250px', class: 'mt-2 mr-2' %>
-        <%= link_to 'Remove', '/admins/products/delete_image/' + image.id.to_s, class: 'button is-danger is-outlined' %>
+        <div class="is-inline-flex is-flex-direction-column is-align-items-center">
+          <%= image_tag image, width: '250px', class: 'mt-2 mr-2' %>
+          <%= link_to 'X', '/admins/products/delete_image/' + image.id.to_s, class: 'button is-danger is-outlined' %>
+        </div>
       <% end %>
   </div>
 <% end %>
