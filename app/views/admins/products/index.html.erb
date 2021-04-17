@@ -11,7 +11,7 @@
 </div>
 
 <div class="table-container">
-  <table class="table is-hoverable">
+  <table class="table is-hoverable is-fullwidth">
     <thead>
       <tr>
         <th>Title</th>
@@ -53,8 +53,9 @@
   </table>
 </div>
 
-<%= form_tag products_csv_upload_path, multipart: true do %>
-  <div id="file-js-example" class="file has-name is-link">
+<h2 class="is-size-4 mb-2">Add new products from uploading CSV file.</h2>
+<%= form_tag admins_products_csv_upload_path, multipart: true do %>
+  <div class="file has-name is-link">
     <label class="file-label">
       <%= file_field_tag :csv_file, class: 'file-input' %>
       <span class="file-cta">

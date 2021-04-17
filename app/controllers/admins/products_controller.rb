@@ -72,6 +72,18 @@ module Admins
       redirect_to action: :index
     end
 
+    def delete_primary_image
+      image = ActiveStorage::Attachment.find(params[:id])
+      image.purge
+      redirect_to action: :index
+    end
+
+    def delete_supporting_images
+      image = ActiveStorage::Attachment.find(params[:id])
+      image.purge
+      redirect_to action: :index
+    end
+
     private
       # Use callbacks to share common setup or constraints between actions.
       def set_product
@@ -80,7 +92,7 @@ module Admins
 
       # Only allow a list of trusted parameters through.
       def product_params
-        params.require(:product).permit(:title, :description, :stock, :status, :primary_image, :supporting_images, category_ids: [])
+        params.require(:product).permit(:title, :description, :stock, :status, :primary_image, supporting_images: [], category_ids: [])
       end
 
       def generate_csv(products)

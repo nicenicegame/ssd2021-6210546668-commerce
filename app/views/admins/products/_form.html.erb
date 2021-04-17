@@ -1,5 +1,5 @@
 <div class="my-5">
-  <%= form_with(model: product, url: admins_products_path, method: :post) do |form| %>
+  <%= form_with(model: [:admins, product]) do |form| %>
     <% if product.errors.any? %>
       <div class="notification is-danger is-light" id="error_explanation">
         <h2><%= pluralize(product.errors.count, "error") %> prohibited this product from being saved:</h2>
@@ -44,13 +44,14 @@
       </div>
     </div>
 
-    <div class="field">
+    <div class="field mt-5">
       <% if product.primary_image.attached? %>
         <label class="label">Currently: <%= product.primary_image.filename %></label>
+        <%= image_tag product.primary_image, width: '150px' %>
       <% else %>
         <%= form.label :primary_image, class: 'label' %>
       <% end %>
-      <div id="file-js-example" class="file has-name is-link">
+      <div class="file has-name is-link">
         <label class="file-label">
           <%= form.file_field :primary_image, class: 'file-input' %>
           <span class="file-cta">
@@ -59,6 +60,35 @@
             </span>
             <span class="file-label">
               Choose a primary image
+            </span>
+          </span>
+          <span class="file-name">
+              No file uploaded
+          </span>
+        </label>
+      </div>
+    </div>
+
+    <div class="field mt-5">
+      <% if product.supporting_images.attached? %>
+        <label class="label">Currently: 
+          <%= product.supporting_images&.map(&:filename).join(', ') %>
+        </label>
+        <% product.supporting_images.each do |sp| %>
+          <%= image_tag sp, width: '150px', class: 'mr-2' %>
+        <% end %>
+      <% else %>
+        <%= form.label :supporting_images, class: 'label' %>
+      <% end %>
+      <div class="file has-name is-info">
+        <label class="file-label">
+          <%= form.file_field :supporting_images, class: 'file-input', multiple: true %>
+          <span class="file-cta">
+            <span class="file-icon">
+              <i class="fas fa-upload"></i>
+            </span>
+            <span class="file-label">
+              Choose a supporting images
             </span>
           </span>
           <span class="file-name">
