@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   root 'admins/products#index'
 
-  match '/admins/products/delete_image/:id' => 'admins/products#delete_image', via: :get
+  match '/admins/products/:product_id/delete_image/:id' => 'admins/products#delete_image', via: :get
 
   namespace :admins do
     namespace :products do

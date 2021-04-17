@@ -75,7 +75,7 @@ module Admins
     def delete_image
       image = ActiveStorage::Attachment.find(params[:id])
       image.purge
-      redirect_to action: :index
+      redirect_to edit_admins_product_path(params[:product_id])
     end
 
     private

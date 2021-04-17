@@ -47,7 +47,10 @@
     <div class="field mt-5">
       <% if product.primary_image.attached? %>
         <label class="label">Currently: <%= product.primary_image.filename %></label>
-        <%= image_tag product.primary_image, width: '150px' %>
+        <div class="is-inline-flex is-flex-direction-column is-align-items-center my-5">
+          <%= image_tag product.primary_image, width: '150px', class: 'mb-3' %>
+          <%= link_to 'X', '/admins/products/' + product.id.to_s + '/delete_image/' + product.primary_image.id.to_s, class: 'button is-danger is-outlined' %>
+        </div>
       <% else %>
         <%= form.label :primary_image, class: 'label' %>
       <% end %>
@@ -75,7 +78,10 @@
           <%= product.supporting_images&.map(&:filename).join(', ') %>
         </label>
         <% product.supporting_images.each do |sp| %>
-          <%= image_tag sp, width: '150px', class: 'mr-2' %>
+          <div class="is-inline-flex is-flex-direction-column is-align-items-center mr-2 my-5">
+            <%= image_tag sp, width: '150px', class: 'mb-3' %>
+            <%= link_to 'X', '/admins/products/' + product.id.to_s + '/delete_image/' + sp.id.to_s, class: 'button is-danger is-outlined' %>
+          </div>
         <% end %>
       <% else %>
         <%= form.label :supporting_images, class: 'label' %>
