@@ -28,7 +28,7 @@
     <p><strong>Primary Image:</strong></p>
     <% if @product.primary_image.attached? %>
       <%= image_tag @product.primary_image, width: '250px', class: 'mt-2' %>
-      <%= link_to 'Remove', '/admins/products/delete_primary_image/' + @product.primary_image.id.to_s, class: 'button is-danger is-outlined' %>
+      <%= link_to 'Remove', '/admins/products/delete_image/' + @product.primary_image.id.to_s, class: 'button is-danger is-outlined' %>
     <% end %>
   </div>
 <% end %>
@@ -38,7 +38,7 @@
     <p><strong>Supporting Images:</strong></p>
       <% @product.supporting_images.each do |image| %>
         <%= image_tag image, width: '250px', class: 'mt-2 mr-2' %>
-        <%= link_to 'Remove', '/admins/products/delete_supporting_images/' + image.id.to_s, class: 'button is-danger is-outlined' %>
+        <%= link_to 'Remove', '/admins/products/delete_image/' + image.id.to_s, class: 'button is-danger is-outlined' %>
       <% end %>
   </div>
 <% end %>

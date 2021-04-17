@@ -72,13 +72,7 @@ module Admins
       redirect_to action: :index
     end
 
-    def delete_primary_image
-      image = ActiveStorage::Attachment.find(params[:id])
-      image.purge
-      redirect_to action: :index
-    end
-
-    def delete_supporting_images
+    def delete_image
       image = ActiveStorage::Attachment.find(params[:id])
       image.purge
       redirect_to action: :index
