@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   devise_for :admins
 
   root 'home#index'
-  match '/:product_id' => 'home#show', via: :get
+  match '/products/:product_id' => 'home#show', via: :get
 
   match '/admins/products/:product_id/delete_image/:id' => 'admins/products#delete_image', via: :get
 

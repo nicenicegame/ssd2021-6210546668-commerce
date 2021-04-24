@@ -14,7 +14,7 @@
         <div class="columns is-multiline">
             <% @products.each do |p| %>
                 <div class="column is-3">
-                    <%= link_to '/' + p.id.to_s do %>
+                    <%= link_to '/products' + p.id.to_s do %>
                         <div class="card is-flex is-flex-direction-column" style="height: 100%;">
                             <div class="card-image">
                                 <figure class="image is-4by3">
