@@ -1,6 +1,6 @@
 <nav class="navbar is-white is-spaced has-shadow">
     <div class="navbar-brand">
-        <%= link_to admins_products_path, class: 'navbar-item has-text-weight-bold' do %>
+        <%= link_to root_path, class: 'navbar-item has-text-weight-bold' do %>
             <i class="fas fa-dumpster mr-3"></i>MY-COMMERCE
         <% end %>
         <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
@@ -11,11 +11,13 @@
     </div>
     <div class="navbar-menu" id="navMenu">
         <div class="navbar-start">
-            <%= link_to admins_products_path, class: 'navbar-item' do %>
-                All Products<i class="fab fa-product-hunt ml-3"></i>
-            <% end %>
-            <%= link_to admins_categories_path, class: 'navbar-item' do %>
-                All Categories<i class="fas fa-beer ml-3"></i>
+            <% if admin_signed_in? %>
+                <%= link_to admins_products_path, class: 'navbar-item' do %>
+                    All Products<i class="fab fa-product-hunt ml-3"></i>
+                <% end %>
+                <%= link_to admins_categories_path, class: 'navbar-item' do %>
+                    All Categories<i class="fas fa-beer ml-3"></i>
+                <% end %>
             <% end %>
         </div>
         <div class="navbar-end">

@@ -1,0 +1,39 @@
+<section class="section">
+    <div class="container">
+        <p>
+        <strong>Title:</strong>
+        <%= @product.title %>
+        </p>
+
+        <p>
+        <strong>Description:</strong>
+        <%= @product.description %>
+        </p>
+
+        <p>
+        <strong>Stock:</strong>
+        <%= @product.stock %>
+        </p>
+
+        <p>
+        <strong>Category:</strong>
+        <%= @product.categories.empty? ? 'NA' : @product.categories&.map(&:name).join(', ') %>
+        </p>
+
+        <% if @product.primary_image.attached? %>
+        <div class="my-3">
+            <p><strong>Primary Image:</strong></p>
+            <%= image_tag @product.primary_image, width: '250px', class: 'mb-2' %>
+        </div>
+        <% end %>
+
+        <% if @product.supporting_images.attached? %>
+        <div class="my-3">
+            <p><strong>Supporting Images:</strong></p>
+            <% @product.supporting_images.each do |image| %>
+                <%= image_tag image, width: '250px', class: 'mb-2' %>
+            <% end %>
+        </div>
+        <% end %>
+    </div>
+</section>

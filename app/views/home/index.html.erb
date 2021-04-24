@@ -1,0 +1,38 @@
+<section class="hero is-medium is-dark">
+    <div class="hero-body">
+        <p class="title">
+        Buy Best Products From All Of The World
+        </p>
+        <p class="subtitle mt-1">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod <br /> tempor incididunt ut labore et dolore magna.
+        </p>
+    </div>
+</section>
+<section class="section">
+    <div class="container">
+        <h2 class="is-size-3 mb-5">Our Products</h2>
+        <div class="columns is-multiline">
+            <% @products.each do |p| %>
+                <div class="column is-3">
+                    <%= link_to '/' + p.id.to_s do %>
+                        <div class="card is-flex is-flex-direction-column" style="height: 100%;">
+                            <div class="card-image">
+                                <figure class="image is-4by3">
+                                    <% if p.primary_image.attached? %>
+                                        <%= image_tag p.primary_image %>
+                                    <% end %>
+                                </figure>
+                            </div>
+                            <div class="card-content is-flex-grow-1">
+                                <div class="content" style="word-break: break-all">
+                                    <h3 class="is-text-weight-bold is-size-5"><%= p.title %></h3>
+                                    <p><%= p.description %></p>
+                                </div>
+                            </div>
+                        </div>
+                    <% end %>
+                </div>
+            <% end %>
+        </div>
+    </div>
+</section>
