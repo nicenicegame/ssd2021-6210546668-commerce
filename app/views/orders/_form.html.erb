@@ -1,0 +1,39 @@
+<div class="my-5">
+  <%= form_with(model: order) do |form| %>
+    <% if order.errors.any? %>
+      <div class="notification is-danger is-light" id="error_explanation">
+        <h2><%= pluralize(order.errors.count, "error") %> prohibited this order from being saved:</h2>
+        <ul>
+          <% order.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="field">
+      <%= form.label :name, class: 'label' %>
+      <div class="control">
+        <%= form.text_field :name, class: 'input' %>
+      </div>
+    </div>
+
+    <div class="field">
+      <%= form.label :product_name, class: 'label' %>
+      <div class="control">
+        <%= form.text_area :product_name, class: 'input' %>
+      </div>
+    </div>
+
+    <div class="field">
+      <%= form.label :address, class: 'label' %>
+      <div class="control">
+        <%= form.text_area :address, class: 'input' %>
+      </div>
+    </div>
+
+    <div class="action">
+      <%= form.submit 'Submit', class: 'button is-primary is-outlined mt-3' %>
+    </div>
+  <% end %>
+</div>

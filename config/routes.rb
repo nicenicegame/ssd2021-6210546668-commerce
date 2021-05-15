@@ -7,6 +7,8 @@ Rails.application.routes.draw do
 
   match '/admins/products/:product_id/delete_image/:id' => 'admins/products#delete_image', via: :get
 
+  resources :orders
+
   namespace :admins do
     namespace :products do
       post 'csv_upload'
@@ -16,6 +18,7 @@ Rails.application.routes.draw do
   namespace :admins do
     resources :products
     resources :categories
+    resources :orders
   end
   
 end

@@ -10,6 +10,12 @@
 </section>
 <section class="section">
     <div class="container">
+        <% if notice %>
+            <div class="notification is-warning is-light"><%= notice %></div>
+        <% end %>
+        <% if alert %>
+            <div class="notification is-danger is-light"><%= alert %></div>
+        <% end %>
         <h2 class="is-size-3 mb-5">Our Products</h2>
         <div class="columns is-multiline">
             <% @products.each do |p| %>
